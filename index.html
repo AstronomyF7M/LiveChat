@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Futuristic Live Chat</title>
+  <title> Live Chat</title>
   <style>
    /* General Styles */
    body {
@@ -101,6 +101,63 @@
     background-color: #00ee00;
    }
   </style>
+ </head>
+ <body>
+  <div class="chat-container">
+   <div class="chat-header">
+    <h2>Live Chat</h2>
+   </div>
+   <div class="chat-body" id="chat-body">
+    <!-- Messages will be added here -->
+   </div>
+   <div class="chat-footer">
+    <input type="text" id="chat-input" class="chat-input" placeholder="Type your message...">
+    <button class="chat-button" onclick="sendMessage()">Send</button>
+   </div>
+  </div>
+ 
+
+  <script>
+   // Function to send a message
+   function sendMessage() {
+    var input = document.getElementById('chat-input');
+    var messageText = input.value;
+    if (messageText.trim() !== '') {
+     addMessage('sent', messageText);
+     input.value = ''; // Clear the input
+     // In a real application, you would send the message to the server here
+    }
+   }
+ 
+
+   // Function to add a message to the chat
+   function addMessage(type, text) {
+    var chatBody = document.getElementById('chat-body');
+    var messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', type);
+    messageDiv.textContent = text;
+    chatBody.appendChild(messageDiv);
+ 
+
+    // Scroll to the bottom of the chat
+    chatBody.scrollTop = chatBody.scrollHeight;
+   }
+ 
+
+   // Example of a received message (for testing)
+   setTimeout(function() {
+    addMessage('received', 'Welcome to the chat!');
+   }, 1000);
+  </script>
+ </body>
+ </html>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Live Chat</title>
+  <link rel="stylesheet" href="style.css">
  </head>
  <body>
   <div class="chat-container">
